@@ -1,0 +1,44 @@
+{
+    "name": "kadena-php/laravel",
+    "description": "Laravel Client for use with the Kadena Pact API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hergen Dillema",
+            "email": "hergen.dillema@gmail.com",
+            "homepage": "https://hergen.nl"
+        }
+    ],
+    "homepage": "https://github.com/kadena-php/laravel",
+    "keywords": ["Kadena",  "Laravel"],
+    "require": {
+        "php": "^8.1.0",
+        "laravel/framework": "^9.46.0",
+        "kadena-php/client": "@dev"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "~9.0",
+        "symplify/easy-coding-standard": "11.1.33.72"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kadena\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kadena\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "Kadena\\Laravel\\KadenaServiceProvider"
+            ],
+            "aliases": {
+                "Laravel": "Kadena\\Laravel\\Facades\\Client"
+            }
+        }
+    }
+}
