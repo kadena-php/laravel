@@ -1,31 +1,23 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Kadena\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Kadena\Client;
 
-class KadenaServiceProvider extends ServiceProvider
+final class KadenaServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/kadena.php', 'kadena');
 
-        $this->app->singleton(Pact::class, static function (): Client {
-            $baseUrl = config('kadena.api.base_url');
-
-            return new Client($baseUrl);
+        $this->app->singleton(Client::class, static function (): Client {
+            return new Client(config('kadena.api.base_url'));
         });
 
-        $this->app->alias(Client::class, 'kadena');
+        $this->app->alias(Client::class, 'kadena-client');
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->publishes([
@@ -34,8 +26,6 @@ class KadenaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
-     *
      * @return array<int, string>
      */
     public function provides(): array
