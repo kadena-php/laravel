@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "620cab3f5e126ca9ab83ce66729fea5e",
+    "content-hash": "35c011097a2446bf9720732f6c074794",
     "packages": [
         {
             "name": "brick/math",
@@ -613,10 +613,16 @@
         {
             "name": "kadena-php/client",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kadena-php/client.git",
+                "reference": "be18bcc2a692058ba87874b48ebb077a376666b2"
+            },
             "dist": {
-                "type": "path",
-                "url": "/home/hergen/personal/kadena-php/client",
-                "reference": "0aba12e24b78e5b73222918b847b7ca670b554e3"
+                "type": "zip",
+                "url": "https://api.github.com/repos/kadena-php/client/zipball/be18bcc2a692058ba87874b48ebb077a376666b2",
+                "reference": "be18bcc2a692058ba87874b48ebb077a376666b2",
+                "shasum": ""
             },
             "require": {
                 "ext-sodium": "*",
@@ -629,17 +635,14 @@
                 "roave/security-advisories": "dev-latest",
                 "symplify/easy-coding-standard": "11.1.33.72"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Kadena\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Kadena\\Tests\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -654,12 +657,13 @@
             "homepage": "https://github.com/kadena-php/client",
             "keywords": [
                 "Kadena",
-                "PHP"
+                "php"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/kadena-php/client/issues",
+                "source": "https://github.com/kadena-php/client/tree/main"
+            },
+            "time": "2023-01-05T10:15:35+00:00"
         },
         {
             "name": "laravel/framework",

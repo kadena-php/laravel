@@ -1,6 +1,6 @@
 <?php
 
-namespace KadenaPhp\Laravel\Facades;
+namespace Kadena\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Kadena\Pact\RequestKey;

@@ -1,6 +1,6 @@
 <?php
 
-namespace KadenaPhp\Laravel;
+namespace Kadena\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Kadena\Client;
