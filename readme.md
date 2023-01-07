@@ -63,6 +63,14 @@ Takes a `RequestKey` and a `string $targetChainId` as parameters and returns a `
 $spv = Client::spv($requestKey, '2');
 ```
 
+### Other Config values
+As detailed in the `kadena-php/client` documentation, the `Meta` class can be constructed through the static `create()` method.
+For convenience, the Laravel config can be used with this method to set metadata:
+```php
+$metadata = \Kadena\Pact\Meta::create(config('kadena.meta'));
+```
+In most cases, the regular way of providing an array of options (optional) provides more flexibility.
+
 
 ## Change log
 
