@@ -18,13 +18,11 @@ final class KadenaServiceProvider extends ServiceProvider
         });
         $this->app->alias(Client::class, 'kadena-client');
 
-
         $this->app->singleton(MetadataFactory::class, static function (): MetadataFactory {
             return (new MetadataFactory())
                 ->withOptions(config('kadena.meta'));
         });
         $this->app->alias(MetadataFactory::class, 'kadena-metadata');
-
 
         $this->app->singleton(CommandFactory::class, static function (): CommandFactory {
             return new CommandFactory();
