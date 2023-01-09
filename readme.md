@@ -27,43 +27,56 @@ php artisan vendor:publish --tag=kadena-config
 
 ## Usage
 For usage examples, see the [kadena-php/client](https://github.com/kadena-php/client) repository before starting to use the Laravel integration.
-This repository also houses more information on the Classes used in the examples below.
 
-### Using the Client
-When using this Laravel package, you can use the `Kadena\Laravel\Facades\Client` facade. This facade uses your `env` or config configuration to set the API base URL.
+This package contains three convenience Facades. Their usage are largely similar to the classes documented in the client package:
 
-The client has a few methods available,
-see the [Pact API docs](https://api.chainweb.com/openapi/pact.html#tag/endpoint-local) for more information on the different use-cases
-and expected responses.
-#### local
-Takes a single `SignedCommand` as a parameter and returns a `ResponseInterface`.
-```php
-$local = Client::local($signedCommand);
+### Client Facade
 ```
-#### send
-Takes a multiple `SignedCommand` wrapped in a `SignedCommandCollection` as a parameter and returns a `RequestKeyCollection`.
-```php
-$send = Client::send(new SignedCommandCollection($signedCommand));
+Kadena\Laravel\Facades\Client
 ```
-#### listen
-Takes a single `RequestKey` as a parameter and returns a `ResponseInterface`.
+Usage
 ```php
-$requestKey = $send->first(); // Get a RequestKey from the send response above
-$listen = Client::single($requestKey);
-```
-#### poll
-Takes a `RequestKeyCollection` as a parameter and returns a `ResponseInterface`.
-```php
-$requestKeyCollection = $send; // The send() method above returned a RequestKeyCollection
-$poll = Client::poll($requestKeyCollection);
-```
-#### spv
-Takes a `RequestKey` and a `string $targetChainId` as parameters and returns a `string`.
-```php
-$spv = Client::spv($requestKey, '2');
+$response = Client::local($signedCommand);
 ```
 
+### Command Facade
+```
+Kadena\Laravel\Facades\Command
+``` 
+Usage
+```php
+$command = Command::withExecutePayload($payload)
+    ->withMetadata($metadata)
+    ->make();
+```
+To see all options, see the Command Factory documentation in the client repository.
+### Metadata Facade
+```
+Kadena\Laravel\Facades\Metadata
+``` 
+Usage
+```php
+$metadata = Metadata::make();
+```
+To see all options, see the Metadata Factory documentation in the client repository. 
+When not specifying any options like the example above, the options set in the `kadena.php` config will be used.
 
+### Config
+An example of the default config:
+```php
+return [
+    'api' => [
+        'base_url' => env('KADENA_API_BASE_URL', 'http://localhost:8888'),
+    ],
+    'meta' => [
+        'ttl' => 7200,
+        'gasLimit' => 10000,
+        'chainId' => '0',
+        'gasPrice' => 1e-8,
+        'sender' => ''
+    ],
+];
+```
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.

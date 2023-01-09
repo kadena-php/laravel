@@ -14,7 +14,7 @@
     "require": {
         "php": "^8.1.0",
         "laravel/framework": "^9.46.0",
-        "kadena-php/client": "@dev"
+        "kadena-php/client": "^0.1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
